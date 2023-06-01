@@ -15,7 +15,7 @@ TEST(CalTest, getSum)
 TEST(CalTest, getGop)
 {
 	Cal* cal = new Cal();
-	EXPECT_TRUE(cal != nullptr);
+	EXPECT_EQ(cal->getGop(3, 4), 12);
 }
 
 TEST(CalTest, getZegop)
