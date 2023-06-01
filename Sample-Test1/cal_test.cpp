@@ -27,7 +27,7 @@ TEST(CalTest, getZegop)
 TEST(CalTest, getMinus)
 {
 	Cal* cal = new Cal();
-	EXPECT_TRUE(cal != nullptr);
+	EXPECT_TRUE(5 == cal->getMinus(8, 3));
 }
 
 TEST(CalTest, getDivide)
