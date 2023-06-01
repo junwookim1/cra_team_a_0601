@@ -1,42 +1,51 @@
 #include "pch.h"
 #include "../Project120/cal.cpp"
 
-TEST(CalTest, Basic) {
-	Cal* cal = new Cal();
-	EXPECT_TRUE(cal != nullptr);
+class AccountTest : public testing::Test
+{
+public:
+	Account account{10000};
+};
+
+TEST_F(AccountTest, Basic)
+{
+	EXPECT_EQ(10000, account.getBalance());
 }
 
-TEST(CalTest, getSum)
+TEST_F(AccountTest, Deposit)
 {
-	Cal* cal = new Cal();
-	EXPECT_TRUE(cal != nullptr);
+	account.deposit(500);
+	EXPECT_EQ(10500, account.getBalance());
 }
 
-TEST(CalTest, getGop)
+TEST_F(AccountTest, Withdraw)
 {
-	Cal* cal = new Cal();
-	EXPECT_EQ(cal->getGop(3, 4), 12);
+	account.withdraw(600);
+	EXPECT_EQ(9400, account.getBalance());
 }
 
-TEST(CalTest, getZegop)
+TEST_F(AccountTest, DefaultIncrease)
 {
-	EXPECT_EQ(25, Cal().getZegop(5));
+	account.increase();
+	EXPECT_EQ(10000*1.05, account.getBalance());
 }
 
-TEST(CalTest, getMinus)
+
+TEST_F(AccountTest, Interest)
 {
-	Cal* cal = new Cal();
-	EXPECT_TRUE(5 == cal->getMinus(8, 3));
+	account.setInterest(3);
+	EXPECT_EQ(3, account.getInterest());
 }
 
-TEST(CalTest, getDivide)
+TEST_F(AccountTest, IncreaseAfterSetInterest)
 {
-	Cal* cal = new Cal();
-	EXPECT_TRUE(cal != nullptr);
+	account.setInterest(3);
+	account.increase();
+	EXPECT_EQ(10000 * 1.03, account.getBalance());
 }
 
-TEST(CalTest, getSumSum)
+TEST_F(AccountTest, ExpectBalanceYears)
 {
-	Cal* cal = new Cal();
-	EXPECT_TRUE(cal != nullptr);
+	account.setInterest(3);
+	EXPECT_EQ(10000 * 1.03 * 1.03, account.expectBalanceYears(2));
 }

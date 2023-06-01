@@ -1,31 +1,52 @@
-class Cal
+class Account
 {
 public:
-	int getSum(int a, int b)
-	{
-		return a + b;
-	}
-
-	int getGop(int a, int b)
-	{
-		return a * b;
-	}
-
-	int getZegop(int a)
-	{
-		return a * a;
-	}
-
-	int getMinus(int a, int b)
-	{
-		return a - b;
-	}
-
-	int getDivide(int a, int b)
+	explicit Account(int balance): balance(balance)
 	{
 	}
 
-	int getSumSum(int a, int b, int c)
+	int getBalance()
 	{
+		return balance;
 	}
+
+	void deposit(int money)
+	{
+		balance += money;
+	}
+
+	void withdraw(int money)
+	{
+		balance -= money;
+	}
+
+	void setInterest(int inter)
+	{
+		interest = inter;
+	}
+
+	int getInterest()
+	{
+		return interest;
+	}
+
+	void increase()
+	{
+		balance += balance * 0.01 * interest;
+	}
+
+	int expectBalanceYears(int y)
+	{
+		int temp_balance = balance;
+		while(y)
+		{
+			temp_balance += temp_balance * 0.01 * interest;
+			y--;
+		}
+		return temp_balance;
+	}
+
+private:
+	int balance;
+	int interest = 5;
 };
