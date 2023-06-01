@@ -5,7 +5,7 @@ public:
 	{
 	}
 
-	int getBalance()
+	int getBalance() const
 	{
 		return balance;
 	}
@@ -25,7 +25,7 @@ public:
 		interest = inter;
 	}
 
-	int getInterest()
+	int getInterest() const
 	{
 		return interest;
 	}
@@ -35,10 +35,10 @@ public:
 		balance += balance * 0.01 * interest;
 	}
 
-	int expectBalanceYears(int y)
+	int expectBalanceYears(int y) const
 	{
 		int temp_balance = balance;
-		while(y)
+		while (y)
 		{
 			temp_balance += temp_balance * 0.01 * interest;
 			y--;
