@@ -32,7 +32,7 @@ public:
 
 	void increase()
 	{
-		balance += balance * 0.01 * interest;
+		balance = balance * (100 + interest) / 100;
 	}
 
 	int expectBalanceYears(int y) const
@@ -40,7 +40,7 @@ public:
 		int temp_balance = balance;
 		while (y)
 		{
-			temp_balance += temp_balance * 0.01 * interest;
+			temp_balance = temp_balance * (100 + interest) / 100;
 			y--;
 		}
 		return temp_balance;
