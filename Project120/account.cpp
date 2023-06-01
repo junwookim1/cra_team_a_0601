@@ -32,7 +32,7 @@ public:
 
 	void increase()
 	{
-		balance = balance * (100 + interest) / 100;
+		balance = getBalanceByInterest(balance);
 	}
 
 	int expectBalanceYears(int y) const
@@ -40,7 +40,7 @@ public:
 		int temp_balance = balance;
 		while (y)
 		{
-			temp_balance = temp_balance * (100 + interest) / 100;
+			temp_balance = getBalanceByInterest(temp_balance);
 			y--;
 		}
 		return temp_balance;
@@ -49,4 +49,9 @@ public:
 private:
 	int balance;
 	int interest = 5;
+
+	int getBalanceByInterest(int bal) const
+	{
+		return bal = bal * (100 + interest) / 100;
+	}
 };
