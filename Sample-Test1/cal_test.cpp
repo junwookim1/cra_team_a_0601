@@ -20,8 +20,7 @@ TEST(CalTest, getGop)
 
 TEST(CalTest, getZegop)
 {
-	Cal* cal = new Cal();
-	EXPECT_TRUE(cal != nullptr);
+	EXPECT_EQ(25, Cal().getZegop(5));
 }
 
 TEST(CalTest, getMinus)
